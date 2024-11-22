@@ -55,6 +55,8 @@ The **User Service** is a microservice that handles user authentication, authori
    pipenv run python app.py
    ## Usage
 
+---
+
 ### Authentication API
 
 - **Login**: `POST /auth/login`
@@ -66,5 +68,5 @@ The **User Service** is a microservice that handles user authentication, authori
 
 ### Appointment Management
 
-- **Book**: `POST /user/appointment`
+- **Book**: `POST /users/appointment`
 - **Cancel**: `DELETE /users/appointment/{apt_id}`
