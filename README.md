@@ -42,11 +42,14 @@ The **User Service** is a microservice that handles user authentication, authori
    cd user_service
 
 2. Install dependences:
+   ```bash
    pipenv install
 4. Configure environment variables:
    Create a .env file in the root directory with the following variables:
+   ```bash
    MONGO_URI=<your_mongo_connection_string>
    JWT_SECRET=<your_jwt_secret>
-5. Start the service:
+6. Start the service:
+   ```bash
    pipenv run python app.py
    
