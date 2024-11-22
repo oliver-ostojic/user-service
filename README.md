@@ -57,6 +57,8 @@ The **User Service** is a microservice that handles user authentication, authori
 
 ---
 
+## Usage
+
 ### Authentication API
 
 - **Login**: `POST /auth/login`
