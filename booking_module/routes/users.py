@@ -2,7 +2,7 @@ import bcrypt
 from bson.objectid import ObjectId, InvalidId
 from flask import Blueprint, request, jsonify, g
 from pydantic import ValidationError
-from user_service.mongodb_connection import users_collection, provider_schedules_collection, client
+from mongodb_connection import users_collection, provider_schedules_collection, client
 from ..models.appointment import Appointment
 from ..models.user import User
 from ..models.schedule import Schedule
@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
-from user_service.auth_module.middleware.jwt_validation import jwt_required
+from auth_module.middleware.jwt_validation import jwt_required
 
 # Load environment variables
 load_dotenv()

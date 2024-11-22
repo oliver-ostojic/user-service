@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from datetime import datetime, timedelta
 import bcrypt
 from jwt import encode
-from user_service.auth_module.user_model import get_user_by_email
+from auth_module.user_model import get_user_by_email
 from dotenv import load_dotenv
 import os
 

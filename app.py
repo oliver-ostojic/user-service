@@ -1,9 +1,9 @@
 from flask import Flask
 from dotenv import load_dotenv
 from mongodb_connection import test_connection
-from user_service.booking_module.routes.users import users_bp
-from user_service.booking_module.routes.provider_schedules import provider_schedules_bp
-from user_service.auth_module.auth_routes import auth_bp
+from booking_module.routes.users import users_bp
+from booking_module.routes.provider_schedules import provider_schedules_bp
+from auth_module.auth_routes import auth_bp
 import os
 
 
