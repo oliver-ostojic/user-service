@@ -66,5 +66,5 @@ The **User Service** is a microservice that handles user authentication, authori
 
 ### Appointment Management
 
-- **Create Appointment**: `POST /user/appointment`
-- **Cancel Appointment**: `DELETE /users/appointment/{apt_id}`
+- **Book**: `POST /user/appointment`
+- **Cancel**: `DELETE /users/appointment/{apt_id}`
