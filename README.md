@@ -45,6 +45,7 @@ The **User Service** is a microservice that handles user authentication, authori
    ```bash
    pipenv install
 4. Configure environment variables:
+
    Create a .env file in the root directory with the following variables:
    ```bash
    MONGO_URI=<your_mongo_connection_string>
