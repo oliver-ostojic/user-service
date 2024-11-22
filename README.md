@@ -53,4 +53,18 @@ The **User Service** is a microservice that handles user authentication, authori
 6. Start the service:
    ```bash
    pipenv run python app.py
-   
+   ## Usage
+
+### Authentication API
+
+- **Login**: `POST /auth/login`
+
+### User Management
+
+- **Get User Profile**: `GET /users/`
+- **Register**: `POST /users/`
+
+### Appointment Management
+
+- **Create Appointment**: `POST /user/appointment`
+- **Cancel Appointment**: `DELETE /users/appointment/{apt_id}`
