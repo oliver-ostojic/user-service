@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip && \
     pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir -r requirements.txt
 
 # Copy application code to the container
-COPY ../.. /app
+COPY . /app
 
 # Expose the port Flask runs on
 EXPOSE 5000
