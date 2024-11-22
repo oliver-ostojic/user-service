@@ -26,12 +26,6 @@ The **User Service** is a microservice that handles user authentication, authori
 
 ---
 
-## Directory Structure
-
-user_service/ ├── app.py # Main entry point for the service ├── auth_module/ # Authentication and authorization logic │ ├── middleware/ # Token validation middleware │ ├── auth_routes.py # Authentication routes │ └── user_model.py # User model for database integration ├── booking_module/ # Appointment and scheduling logic │ ├── models/ # Database models for users, appointments, schedules │ ├── routes/ # Routes for managing bookings and schedules ├── mongodb_connection.py # MongoDB connection utility ├── scripts/ # Utility scripts (e.g., mock data generation) ├── Dockerfile # Docker configuration ├── Pipfile # Python dependencies ├── Pipfile.lock # Locked dependencies for reproducibility ├── heroku.yml # Heroku deployment configuration └── README.md # Project documentation
-
----
-
 ## Installation
 
 ### Prerequisites
