@@ -1,3 +1,4 @@
+import CORS
 from flask import Flask
 from dotenv import load_dotenv
 from mongodb_connection import test_connection
@@ -5,6 +6,7 @@ from booking_module.routes.users import users_bp
 from booking_module.routes.provider_schedules import provider_schedules_bp
 from auth_module.auth_routes import auth_bp
 import os
+from flask_cors import CORS
 
 
 def create_app():
@@ -12,6 +14,7 @@ def create_app():
     load_dotenv()
 
     app = Flask(__name__)
+    CORS(app)
     # Set secret key for the Flask app
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
     # Test MongoDB connection
