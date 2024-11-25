@@ -1,4 +1,3 @@
-import CORS
 from flask import Flask
 from dotenv import load_dotenv
 from mongodb_connection import test_connection
@@ -19,12 +18,16 @@ def create_app():
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
     # Test MongoDB connection
     test_connection()
+
+    CORS(users_bp)
+    CORS(provider_schedules_bp)
+    CORS(auth_bp)
+
     # Register blueprints
     app.register_blueprint(users_bp, url_prefix='/users')
     app.register_blueprint(provider_schedules_bp, url_prefix='/provider_schedules')
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
-    print(app.url_map)
     return app
 
 
