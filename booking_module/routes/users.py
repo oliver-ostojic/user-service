@@ -11,6 +11,9 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
 from auth_module.middleware.jwt_validation import jwt_required
+from jwt import encode
+from datetime import datetime, timedelta
+
 
 # Load environment variables
 load_dotenv()
@@ -41,8 +44,14 @@ def create_user():
         user_dict = user.model_dump()
         # Insert into MongoDB and get inserted ID
         result = users_collection.insert_one(user_dict)
+        # Create token to return for user session
+        payload = {
+            'user_id': str(result.inserted_id),
+            'exp': datetime.utcnow() + timedelta(hours=1)
+        }
+        token = encode(payload, SECRET_KEY, algorithm='HS256')
         # Return success response
-        return jsonify({'message': 'User successfully created.', 'id': str(result.inserted_id)}), 201
+        return jsonify({'message': 'User successfully created.', 'token': token}), 201
     except ValidationError as e:
         return jsonify({'error': e.errors()}), 422
     except Exception as e:
