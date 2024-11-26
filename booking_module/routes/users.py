@@ -3,7 +3,7 @@ from bson.objectid import ObjectId, InvalidId
 from flask import Blueprint, request, jsonify, g
 from pydantic import ValidationError
 from mongodb_connection import users_collection, provider_schedules_collection, client
-from ..models.appointment import Appointment
+from ..models.appointment import Appointment, ProviderName
 from ..models.user import User
 from ..models.schedule import Schedule
 from dotenv import load_dotenv
@@ -93,6 +93,12 @@ def book_appointment():
     start_datetime = data.get('start_datetime')
     reason = data.get('reason')
     notes = data.get('notes')
+    provider_first_name = data.get('provider_first_name')
+    provider_last_name = data.get('provider_last_name')
+
+    # Create ProviderName
+    provider_name = ProviderName(first=provider_first_name, last=provider_last_name)
+
     # Validate required fields
     if not provider_id or not start_datetime:
         return jsonify({'message': 'provider_id and start_datetime are required'}), 400
@@ -101,6 +107,7 @@ def book_appointment():
         appointment = Appointment(_id=str(ObjectId()),
                                   user_id=user_id,
                                   provider_id=provider_id,
+                                  provider_name=provider_name,
                                   start_datetime=start_datetime,
                                   reason=reason,
                                   notes=notes)

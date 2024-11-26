@@ -11,10 +11,16 @@ class AppointmentStatus(str, Enum):
     PASSED = "passed"
 
 
+class ProviderName(BaseModel):
+    first: str
+    last: str
+
+
 class Appointment(BaseModel):
     id: ObjectId = Field(alias="_id")
     user_id: ObjectId
     provider_id: int
+    provider_name: ProviderName
     start_datetime: datetime
     status: AppointmentStatus = AppointmentStatus.UPCOMING
     reason: str

@@ -13,7 +13,8 @@ def create_app():
     load_dotenv()
 
     app = Flask(__name__)
-    CORS(app)
+    # Enable CORS 
+    CORS(app, resources={r"/*": {"origins": "*"}})
     # Set secret key for the Flask app
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
     # Test MongoDB connection
