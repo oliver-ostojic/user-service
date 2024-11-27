@@ -1,6 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
-from mongodb_connection import users_collection, client, uri
+from mongodb_connection import users_collection, client
 
 
 # Function to update all appointment statuses
