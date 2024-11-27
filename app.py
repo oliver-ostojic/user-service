@@ -6,6 +6,7 @@ from booking_module.routes.provider_schedules import provider_schedules_bp
 from auth_module.auth_routes import auth_bp
 import os
 from flask_cors import CORS
+from scheduler import start_scheduler
 
 
 def create_app():
@@ -23,6 +24,8 @@ def create_app():
     CORS(users_bp)
     CORS(provider_schedules_bp)
     CORS(auth_bp)
+
+    start_scheduler()
 
     # Register blueprints
     app.register_blueprint(users_bp, url_prefix='/users')
