@@ -30,6 +30,12 @@ def create_user():
         user_data = request.get_json()
         if not user_data:
             return jsonify({'message': 'Missing or invalid JSON data'}), 400
+
+        # Verify the email is not already linked to an account
+        user = users_collection.find_one({'email': user_data['email']})
+        if user:
+            return jsonify({'message': 'User with email: {} already exists'.format(user_data['email'])}), 400
+
         # Extract plain-text password
         plain_password = user_data.pop('password', None)
         if not plain_password:
@@ -38,6 +44,7 @@ def create_user():
         hashed_password = bcrypt.hashpw(plain_password.encode('utf-8'), bcrypt.gensalt())
         # Add the hashed_password to user_data
         user_data['hashed_password'] = hashed_password.decode('utf-8')
+
         # Validate and create the user object
         user = User(**user_data)
         # Convert Pydantic model to a dict
