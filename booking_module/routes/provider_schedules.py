@@ -18,6 +18,12 @@ def get_schedule(provider_id):
         schedule = provider_schedules_collection.find_one({'provider_id': int(provider_id)})
         if schedule:
             schedule['_id'] = str(schedule['_id'])
+            # Update availability to only show available slots
+            unbooked_slots = []
+            for slot in schedule['availability']:
+                if slot['is_booked'] is False:
+                    unbooked_slots.append(slot)
+            schedule['availability'] = unbooked_slots
             return jsonify(schedule), 200
         else:
             return jsonify({'message': 'Schedule not found for provider with id: {}'.format(provider_id)}), 404
